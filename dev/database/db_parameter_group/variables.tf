@@ -1,6 +1,12 @@
+variable "family" {
+  description = "(Required) The family of the DB parameter group."
+  type        = string
+  default     = "mysql5.6"
+}
+
 variable "db_parameters" {
-  description = "(Optional) A list of DB parameters to apply. UTF8, ASIA/SEOUL, Timeout 60s, apply_method=pending-reboot"
-  type        = map
+  description = "(Optional) A list of DB parameters to apply. Note that parameters may differ from a family to an other. Full list of all parameters can be discovered via aws rds describe-db-parameters after initial creation of the group."
+  type        = map(string)
 
   default = {
     back_log                            = 100
@@ -47,5 +53,13 @@ variable "db_parameters" {
     time_zone                           = "Asia/Seoul"
     tx_isolation                        = "REPEATABLE-READ"
     wait_timeout                        = 60
+  }
+}
+
+variable "tags" {
+  type = map(string)
+  default = {
+    Terraform     = "true"
+    Workload-type = "others" # production, test
   }
 }
