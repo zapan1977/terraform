@@ -34,13 +34,13 @@ variable "db_parameters" {
     innodb_flush_method                 = "O_DIRECT"
     innodb_io_capacity                  = "1000"
     innodb_io_capacity_max              = "2000"
-    innodb_lock_wait_timeout            = "60"
+    innodb_lock_wait_timeout            = "60" # innodb 레코드 잠금에 대한 대기 타임 아웃
     innodb_max_dirty_pages_pct          = "30"
     innodb_read_io_threads              = "8"
     innodb_rollback_on_timeout          = "1"
     innodb_write_io_threads             = "8"
     interactive_timeout                 = "60"
-    lock_wait_timeout                   = "60"
+    lock_wait_timeout                   = "60" # Meta Data 잠금에 대한 time out
     log_bin_trust_function_creators     = "1"
     log_output                          = "TABLE"
     log_queries_not_using_indexes       = "1"
