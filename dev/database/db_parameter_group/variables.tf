@@ -57,6 +57,7 @@ variable "mysql56_db_parameters" {
     # Application 의 Connection Pool 설정 값 * 배포 서버 대수 * 2 로 설정.
     # AWS 위에서 커넥션 풀과 배포 서버 대수의 2배수로 잡는 이유는 Blue/Green 배포나 Auto-scaling 에 따른 Connection 증가로 인한 장애 대비를 위해서.
     # max_connections = "{DBInstanceClassMemory/12582880}" # Default: AWS RDS MySQL, MariaDB, Aurora MySQL은 인스턴스 메모리를 기준으로 계산
+    max_seeks_for_key  = 100 # integer type Default: 18446744073709551615. 100으로 낮출 경우 테이블 스캔 대신에 인덱스 스캔을 사용할 수 있습니다.
     net_read_timeout   = "60"
     net_write_timeout  = "60"
     performance_schema = "1"
